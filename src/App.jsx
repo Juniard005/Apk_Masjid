@@ -1,24 +1,26 @@
-import Sidebar from "./components/layout/Sidebar";
-import Dashboard from "./components/layout/Dashboard";
-import { useState } from "react";
-import RoutesIndex from "./routes";
+import { StrictMode } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+import Layout from "./components/Layout.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Events from "./pages/Events.jsx";
+import Calendar from "./pages/Calendar.jsx";
 
 function App() {
-  const [sidebarToggle, setSidebarToggle] = useState(false);
-  return (
-    <>
-      <div className="flex">
-        <Sidebar sidebarToggle={sidebarToggle} />
-        <Dashboard
-          sidebarToggle={sidebarToggle}
-          setSidebarToggle={setSidebarToggle}
-        />
-      </div>
-      <div className="container">
-        <RoutesIndex />
-      </div>
-    </>
-  );
+	return (
+		<StrictMode>
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<Layout />}>
+						<Route index element={<Dashboard />} />
+						<Route path='events' element={<Events />} />
+						<Route path='calendar' element={<Calendar />} />
+						{/* Add more routes as needed */}
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</StrictMode>
+	);
 }
 
 export default App;
