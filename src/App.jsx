@@ -1,23 +1,11 @@
-import Sidebar from "./components/layout/Sidebar";
-import Dashboard from "./components/layout/Dashboard";
-import { useState } from "react";
-import RoutesIndex from "./routes";
+import Layouts from "./layout/Layouts";
 
 function App() {
-  const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
-    <>
-      <div className="flex">
-        <Sidebar sidebarToggle={sidebarToggle} />
-        <Dashboard
-          sidebarToggle={sidebarToggle}
-          setSidebarToggle={setSidebarToggle}
-        />
-      </div>
-      <div className="container">
-        <RoutesIndex />
-      </div>
-    </>
+    <Layouts>
+      {/* Your page content or routes will go here */}
+      <div>Page Content</div>
+    </Layouts>
   );
 }
 
